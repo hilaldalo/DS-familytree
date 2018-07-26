@@ -11,7 +11,7 @@ public class Family {
 	public void addBigSon(int fatherId, String son, int sonId) {
 		Person temp = searchById(this.oldOne, fatherId);
 		if (temp == null) {
-			System.out.println(ANSI_RED + "There's No Father!" + ANSI_RESET);
+			Print.red("There's No Father!");
 			return;
 		}
 		temp.bigSon = new Person(son, sonId);
@@ -21,7 +21,7 @@ public class Family {
 	public void addBro(int personId, String bro, int broId) {
 		Person temp = searchById(this.oldOne, personId);
 		if (temp == null) {
-			System.out.println(ANSI_RED + "There's No One with That Name!" + ANSI_RESET);
+			Print.red("There's No One with That Name!");
 		}
 		temp.bro = new Person(bro, broId);
 		temp.bro.father = temp.father;
@@ -30,7 +30,7 @@ public class Family {
 	public void addNew(Person father, String son, int sonId, int childNumber) {
 		Person temp = father;
 		if (temp == null) {
-			System.out.println(ANSI_RED + "There's No Father!" + ANSI_RESET);
+			Print.red("There's No Father!");
 			return;
 		}
 		if (temp.bigSon != null && childNumber > 1) {
@@ -48,14 +48,14 @@ public class Family {
 			}
 			return;
 		} else
-			System.out.print(ANSI_RED + "Add is Not Done!!!" + ANSI_RESET);
+			Print.red("Add is Not Done!!!");
 	}
 
 	public void delete(Person person) {
 
 		Person temp = person;
 		if (temp == null) {
-			System.out.println(ANSI_RED + "No One Found !" + ANSI_RESET);
+			Print.red("No One Found !");
 			return;
 		}
 		if (temp.father == null) {
@@ -115,11 +115,11 @@ public class Family {
 	public void printSons(Person person) {
 		Person temp = person;
 		if (temp == null) {
-			System.out.println(ANSI_RED + "No One Found !" + ANSI_RESET);
+			Print.red("No One Found !");
 			return;
 		}
 		if (temp.bigSon == null) {
-			System.out.println(ANSI_RED + "There's No Son!" + ANSI_RESET);
+			Print.red("There's No Son!");
 			return;
 		}
 		System.out.print(ANSI_GREEN + "Sons: " + temp.bigSon.name + ANSI_RESET);
@@ -134,11 +134,11 @@ public class Family {
 	public void printBrothersAndNephews(Person person) {
 		Person temp = person;
 		if (temp == null) {
-			System.out.println(ANSI_RED + "No One Found !" + ANSI_RESET);
+			Print.red("No One Found !");
 			return;
 		}
 		if (temp.bro == null) {
-			System.out.println(ANSI_RED + "There's No Brother!" + ANSI_RESET);
+			Print.red("There's No Brother!");
 			return;
 		}
 		temp = temp.father.bigSon;
@@ -155,11 +155,11 @@ public class Family {
 	public void printNephews(Person person) {
 		Person temp = person;
 		if (temp == null) {
-			System.out.println(ANSI_RED + "No One Found!" + ANSI_RESET);
+			Print.red("No One Found!");
 			return;
 		}
 		if (temp.bigSon == null) {
-			System.out.println(ANSI_RED + "There's No Son!" + ANSI_RESET);
+			Print.red("There's No Son!");
 			return;
 		}
 		System.out.print(ANSI_GREEN + temp.bigSon.name + " " + ANSI_RESET);
@@ -175,12 +175,12 @@ public class Family {
 	public void printUncles(Person person) {
 		Person temp = person;
 		if (temp == null) {
-			System.out.println(ANSI_RED + "No One Found!" + ANSI_RESET);
+			Print.red("No One Found!");
 			return;
 		}
 		temp = temp.father;
 		if (temp == null || temp.bro == null) {
-			System.out.println(ANSI_RED + "Thers's No Uncle!" + ANSI_RESET);
+			Print.red("Thers's No Uncle!");
 			return;
 		}
 		printBrothersAndNephews(temp);
@@ -194,7 +194,7 @@ public class Family {
 
 	public void print(Person p) {
 		if (p == null) {
-			System.out.println(ANSI_RED + "There's No Family!" + ANSI_RESET);
+			Print.red("There's No Family!");
 			return;
 		}
 		if (p.bro != null) {

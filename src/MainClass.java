@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class MainClass {
 
-
 	public static void main(String[] args) {
 
 		Family family = createFamily();
@@ -39,7 +38,7 @@ public class MainClass {
 				father = family.searchById(family.oldOne, fatherId);
 
 				if (father == null) {
-					System.out.println(ANSI_RED + "Father Not Found!!!" + ANSI_RESET);
+					Print.red("Father Not Found!!!");
 					break;
 				}
 				System.out.println(ANSI_GREEN + father.name + ANSI_RESET);
@@ -48,7 +47,7 @@ public class MainClass {
 				sonId = input.nextInt();
 				// search to see if id is already exist or not
 				if (searchInIds(sonId, idsList)) {
-					System.out.print(ANSI_RED + "This Id Already Exist!!!\n" + ANSI_RESET);
+					Print.red("This Id Already Exist!!!\n");
 					break;
 				}
 				// add his id to our ids list
@@ -75,12 +74,12 @@ public class MainClass {
 				// find him in family
 				son = family.searchById(family.oldOne, sonId);
 				if (son == null) {
-					System.out.println(ANSI_RED + "Person not Found!" + ANSI_RESET);
+					Print.red("Person not Found!");
 					break;
 				}
 				String b;
-				System.out.println(ANSI_GREEN + "Are You Sure You Want To Delete " + ANSI_RED + son.name + ANSI_GREEN
-						+ " ? y or n" + ANSI_RESET);
+///// For later				System.out.println(ANSI_GREEN + "Are You Sure You Want To Delete " + ANSI_RED + son.name + ANSI_GREEN
+//						+ " ? y or n" + ANSI_RESET);
 				b = input.next();
 
 				if (b.equals("y")) {

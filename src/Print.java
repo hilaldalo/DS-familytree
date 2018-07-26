@@ -16,5 +16,11 @@ public class Print {
 		System.out.print(ANSI_PURPLE + s + ANSI_RESET);
 		
 	}
+	
+	public static void red(String s) {
+		
+		System.out.println(ANSI_RED + s + ANSI_RESET);
+		
+	}
 
 }
