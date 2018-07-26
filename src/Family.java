@@ -1,0 +1,220 @@
+import java.util.Objects;
+
+public class Family {
+	public static final String ANSI_RESET = "\u001B[0m";
+	public static final String ANSI_BLACK = "\u001B[30m";
+	public static final String ANSI_RED = "\u001B[31m";
+	public static final String ANSI_GREEN = "\u001B[32m";
+	public static final String ANSI_YELLOW = "\u001B[33m";
+	public static final String ANSI_BLUE = "\u001B[34m";
+	public static final String ANSI_PURPLE = "\u001B[35m";
+	public static final String ANSI_CYAN = "\u001B[36m";
+	public static final String ANSI_WHITE = "\u001B[37m";
+
+	Person oldOne;
+
+	public Family(String name, int id) {
+		oldOne = new Person(name, id);
+	}
+
+	public void addBigSon(int fatherId, String son, int sonId) {
+		Person temp = searchById(this.oldOne, fatherId);
+		if (temp == null) {
+			System.out.println(ANSI_RED + "There's No Father!" + ANSI_RESET);
+			return;
+		}
+		temp.bigSon = new Person(son, sonId);
+		temp.bigSon.father = temp;
+	}
+
+	public void addBro(int personId, String bro, int broId) {
+		Person temp = searchById(this.oldOne, personId);
+		if (temp == null) {
+			System.out.println(ANSI_RED + "There's No One with That Name!" + ANSI_RESET);
+		}
+		temp.bro = new Person(bro, broId);
+		temp.bro.father = temp.father;
+	}
+
+	public void addNew(Person father, String son, int sonId, int childNumber) {
+		Person temp = father;
+		if (temp == null) {
+			System.out.println(ANSI_RED + "There's No Father!" + ANSI_RESET);
+			return;
+		}
+		if (temp.bigSon != null && childNumber > 1) {
+			temp = temp.bigSon;
+			for (int i = 1; i < childNumber - 1 && temp.bro != null; i++)
+				temp = temp.bro;
+			temp.bro = new Person(son, sonId, temp.father, temp.bro);
+			return;
+		}
+		if (childNumber == 1) {
+			if (temp.bigSon != null) {
+				temp.bigSon = new Person(son, sonId, temp, temp.bigSon);
+			} else {
+				temp.bigSon = new Person(son, sonId, temp, null);
+			}
+			return;
+		} else
+			System.out.print(ANSI_RED + "Add is Not Done!!!" + ANSI_RESET);
+	}
+
+	public void delete(Person person) {
+
+		Person temp = person;
+		if (temp == null) {
+			System.out.println(ANSI_RED + "No One Found !" + ANSI_RESET);
+			return;
+		}
+		if (temp.father == null) {
+			oldOne = null;
+			System.out.println(ANSI_GREEN + "Family Been Removed!" + ANSI_RESET);
+			return;
+		}
+		if (temp.father.bigSon.id == person.id) {
+			temp.father.bigSon = temp.father.bigSon.bro;
+			System.out.println(ANSI_GREEN + "Person Deleted Succecfully!!" + ANSI_RESET);
+			return;
+		}
+		temp = temp.father.bigSon;
+		while (temp.bro.id != person.id)
+			temp = temp.bro;
+		temp.bro = temp.bro.bro;
+		System.out.println(ANSI_GREEN + "Person Deleted Succecfully!!" + ANSI_RESET);
+		return;
+	}
+
+	public Person search(Person person, String name) {
+		if (Objects.equals(person.name, name))
+			return person;
+		if (person.bro != null) {
+			Person broResult = search(person.bro, name);
+			if (broResult != null)
+				return broResult;
+		}
+		if (person.bigSon != null) {
+			Person bigSonResult = search(person.bigSon, name);
+			if (bigSonResult != null)
+				return bigSonResult;
+		}
+		return null;
+
+	}
+
+	public Person searchById(Person person, int id) {
+		if (person == null) {
+			return null;
+		}
+		if (person.id == id)
+			return person;
+		if (person.bro != null) {
+			Person broResult = searchById(person.bro, id);
+			if (broResult != null)
+				return broResult;
+		}
+		if (person.bigSon != null) {
+			Person bigSonResult = searchById(person.bigSon, id);
+			if (bigSonResult != null)
+				return bigSonResult;
+		}
+		return null;
+	}
+
+	public void printSons(Person person) {
+		Person temp = person;
+		if (temp == null) {
+			System.out.println(ANSI_RED + "No One Found !" + ANSI_RESET);
+			return;
+		}
+		if (temp.bigSon == null) {
+			System.out.println(ANSI_RED + "There's No Son!" + ANSI_RESET);
+			return;
+		}
+		System.out.print(ANSI_GREEN + "Sons: " + temp.bigSon.name + ANSI_RESET);
+		temp = temp.bigSon.bro;
+		while (temp != null) {
+			System.out.print(ANSI_GREEN + " , " + temp.name + ANSI_RESET);
+			temp = temp.bro;
+		}
+		System.out.println("");
+	}
+
+	public void printBrothersAndNephews(Person person) {
+		Person temp = person;
+		if (temp == null) {
+			System.out.println(ANSI_RED + "No One Found !" + ANSI_RESET);
+			return;
+		}
+		if (temp.bro == null) {
+			System.out.println(ANSI_RED + "There's No Brother!" + ANSI_RESET);
+			return;
+		}
+		temp = temp.father.bigSon;
+		while (temp != null) {
+			if (temp.id != person.id) {
+				System.out.print(ANSI_GREEN + temp.name + " " + ANSI_RESET);
+				printSons(temp);
+			}
+			temp = temp.bro;
+		}
+
+	}
+
+	public void printNephews(Person person) {
+		Person temp = person;
+		if (temp == null) {
+			System.out.println(ANSI_RED + "No One Found!" + ANSI_RESET);
+			return;
+		}
+		if (temp.bigSon == null) {
+			System.out.println(ANSI_RED + "There's No Son!" + ANSI_RESET);
+			return;
+		}
+		System.out.print(ANSI_GREEN + temp.bigSon.name + " " + ANSI_RESET);
+		printSons(temp.bigSon);
+		temp = temp.bigSon.bro;
+		while (temp != null) {
+			System.out.print(ANSI_GREEN + temp.name + " " + ANSI_RESET);
+			printSons(temp);
+			temp = temp.bro;
+		}
+	}
+
+	public void printUncles(Person person) {
+		Person temp = person;
+		if (temp == null) {
+			System.out.println(ANSI_RED + "No One Found!" + ANSI_RESET);
+			return;
+		}
+		temp = temp.father;
+		if (temp == null || temp.bro == null) {
+			System.out.println(ANSI_RED + "Thers's No Uncle!" + ANSI_RESET);
+			return;
+		}
+		printBrothersAndNephews(temp);
+	}
+
+	public int getNumber(Person person) {
+		if (person == null)
+			return 0;
+		return 1 + getNumber(person.bro) + getNumber(person.bigSon);
+	}
+
+	public void print(Person p) {
+		if (p == null) {
+			System.out.println(ANSI_RED + "There's No Family!" + ANSI_RESET);
+			return;
+		}
+		if (p.bro != null) {
+			p.bro.printPerson(true, "");
+		}
+		if (p.name == null)
+			System.out.print(" ");
+		else
+			System.out.print(p.name + ":" + p.id + "\n");
+		if (p.bigSon != null) {
+			p.bigSon.printPerson(false, "");
+		}
+	}
+}
