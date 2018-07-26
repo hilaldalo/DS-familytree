@@ -38,10 +38,10 @@ public class MainClass {
 				father = family.searchById(family.oldOne, fatherId);
 
 				if (father == null) {
-					Print.red("Father Not Found!!!");
+					Print.red("Father Not Found!!!\n");
 					break;
 				}
-				Print.green(father.name);
+				Print.green(father.name + "\n");
 				System.out.print("Input Son Id: ");
 
 				sonId = input.nextInt();
@@ -74,13 +74,13 @@ public class MainClass {
 				// find him in family
 				son = family.searchById(family.oldOne, sonId);
 				if (son == null) {
-					Print.red("Person not Found!");
+					Print.red("Person not Found!\n");
 					break;
 				}
 				String b;
 				Print.green("Are You Sure You Want To Delete ");
 				Print.red(son.name);
- 				Print.green(" ? y or n");
+				Print.green(" ? y or n\n");
 				b = input.next();
 
 				if (b.equals("y")) {
@@ -127,7 +127,7 @@ public class MainClass {
 
 				Print.purple("---- Print Numbers  ----\n");
 				int num = family.getNumber(family.oldOne);
-				Print.green("Numbers Are: " + num);
+				Print.green("Numbers Are: " + num + "\n");
 				break;
 			case 7:
 				//////////////////////////////// Print a Person Uncles //////////////////
@@ -298,10 +298,10 @@ public class MainClass {
 	}
 
 	public static void createMenu() {
-		
+
 		Print.yellow("1.Add New Person\n" + "2.Delete A Person\n" + "3.Print A Person Sons\n"
 				+ "4.Print A Person Brothers And Nephews\n" + "5.Print A Person Nephews\n" + "6.Print Number\n"
 				+ "7.Print A Person Uncles\n" + "8.Print All Family\n" + "9.Save Family\n" + "10.Exit\n");
-		
+
 	}
 }
