@@ -5,7 +5,7 @@ You can have a person with **name** and **id**. <br>
 Each person can have a **brother** and a **big son!**
 
 # ScreenShots
-![](1.png?raw=true)<br>
-![](2.png?raw=true)<br>
-![](5.png?raw=true)<br>
-![](6.png?raw=true)
+![](ScreenShots/1.png?raw=true)<br>
+![](ScreenShots/2.png?raw=true)<br>
+![](ScreenShots/5.png?raw=true)<br>
+![](ScreenShots/6.png?raw=true)
