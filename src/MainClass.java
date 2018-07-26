@@ -298,8 +298,10 @@ public class MainClass {
 	}
 
 	public static void createMenu() {
-		System.out.print(ANSI_YELLOW + "1.Add New Person\n" + "2.Delete A Person\n" + "3.Print A Person Sons\n"
+		
+		Print.yellow("1.Add New Person\n" + "2.Delete A Person\n" + "3.Print A Person Sons\n"
 				+ "4.Print A Person Brothers And Nephews\n" + "5.Print A Person Nephews\n" + "6.Print Number\n"
-				+ "7.Print A Person Uncles\n" + "8.Print All Family\n" + "9.Save Family\n" + "10.Exit\n" + ANSI_RESET);
+				+ "7.Print A Person Uncles\n" + "8.Print All Family\n" + "9.Save Family\n" + "10.Exit\n");
+		
 	}
 }

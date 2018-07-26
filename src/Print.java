@@ -28,5 +28,11 @@ public class Print {
 		System.out.println(ANSI_GREEN + s + ANSI_RESET);
 		
 	}
+	
+	public static void yellow(String s) {
+		
+		System.out.print(ANSI_YELLOW + s + ANSI_RESET);
+		
+	}
 
 }

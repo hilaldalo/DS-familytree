@@ -38,7 +38,8 @@ public class Person {
 			System.out.print("BigSon: ");
 		}
 		System.out.print("----- ");
-		// for later System.out.print(ANSI_GREEN + this.name + ANSI_RESET + ":" + ANSI_YELLOW + this.id + ANSI_RESET + "\n");
+		Print.green(this.name);
+		Print.yellow(this.id + "\n");
 		if (this.bigSon != null) {
 			this.bigSon.printPerson(false, indent + (isBro ? " |           " : "              "));
 		}
