@@ -60,19 +60,19 @@ public class Family {
 		}
 		if (temp.father == null) {
 			oldOne = null;
-			System.out.println(ANSI_GREEN + "Family Been Removed!" + ANSI_RESET);
+			Print.green("Family Been Removed!");
 			return;
 		}
 		if (temp.father.bigSon.id == person.id) {
 			temp.father.bigSon = temp.father.bigSon.bro;
-			System.out.println(ANSI_GREEN + "Person Deleted Succecfully!!" + ANSI_RESET);
+			Print.green("Person Deleted Succecfully!!");
 			return;
 		}
 		temp = temp.father.bigSon;
 		while (temp.bro.id != person.id)
 			temp = temp.bro;
 		temp.bro = temp.bro.bro;
-		System.out.println(ANSI_GREEN + "Person Deleted Succecfully!!" + ANSI_RESET);
+		Print.green("Person Deleted Succecfully!!");
 		return;
 	}
 
@@ -122,10 +122,10 @@ public class Family {
 			Print.red("There's No Son!");
 			return;
 		}
-		System.out.print(ANSI_GREEN + "Sons: " + temp.bigSon.name + ANSI_RESET);
+		Print.green("Sons: " + temp.bigSon.name);
 		temp = temp.bigSon.bro;
 		while (temp != null) {
-			System.out.print(ANSI_GREEN + " , " + temp.name + ANSI_RESET);
+			Print.green(" , " + temp.name);
 			temp = temp.bro;
 		}
 		System.out.println("");
@@ -144,7 +144,7 @@ public class Family {
 		temp = temp.father.bigSon;
 		while (temp != null) {
 			if (temp.id != person.id) {
-				System.out.print(ANSI_GREEN + temp.name + " " + ANSI_RESET);
+				Print.green(temp.name + " ");
 				printSons(temp);
 			}
 			temp = temp.bro;
@@ -162,11 +162,11 @@ public class Family {
 			Print.red("There's No Son!");
 			return;
 		}
-		System.out.print(ANSI_GREEN + temp.bigSon.name + " " + ANSI_RESET);
+		Print.green(temp.bigSon.name);
 		printSons(temp.bigSon);
 		temp = temp.bigSon.bro;
 		while (temp != null) {
-			System.out.print(ANSI_GREEN + temp.name + " " + ANSI_RESET);
+			Print.green(temp.name + " ");
 			printSons(temp);
 			temp = temp.bro;
 		}

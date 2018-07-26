@@ -41,7 +41,7 @@ public class MainClass {
 					Print.red("Father Not Found!!!");
 					break;
 				}
-				System.out.println(ANSI_GREEN + father.name + ANSI_RESET);
+				Print.green(father.name);
 				System.out.print("Input Son Id: ");
 
 				sonId = input.nextInt();
@@ -78,8 +78,9 @@ public class MainClass {
 					break;
 				}
 				String b;
-///// For later				System.out.println(ANSI_GREEN + "Are You Sure You Want To Delete " + ANSI_RED + son.name + ANSI_GREEN
-//						+ " ? y or n" + ANSI_RESET);
+				Print.green("Are You Sure You Want To Delete ");
+				Print.red(son.name);
+ 				Print.green(" ? y or n");
 				b = input.next();
 
 				if (b.equals("y")) {
@@ -126,8 +127,7 @@ public class MainClass {
 
 				Print.purple("---- Print Numbers  ----\n");
 				int num = family.getNumber(family.oldOne);
-				System.out.println(ANSI_GREEN + "Numbers Are: " + num + ANSI_RESET);
-
+				Print.green("Numbers Are: " + num);
 				break;
 			case 7:
 				//////////////////////////////// Print a Person Uncles //////////////////
@@ -150,7 +150,7 @@ public class MainClass {
 
 				createIdsFile(family);
 				createFamilyFile(family);
-				System.out.print(ANSI_GREEN + "---- Family Saved Succesfuly!!!  ----\n" + ANSI_RESET);
+				Print.green("---- Family Saved Succesfuly!!!  ----\n");
 				break;
 
 			case 10:

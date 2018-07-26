@@ -22,5 +22,11 @@ public class Print {
 		System.out.println(ANSI_RED + s + ANSI_RESET);
 		
 	}
+	
+	public static void green(String s) {
+		
+		System.out.println(ANSI_GREEN + s + ANSI_RESET);
+		
+	}
 
 }
