@@ -31,7 +31,7 @@ public class MainClass {
 			case 1:
 				/////////////////////// Add New Person ///////////////////////////
 
-				System.out.print(ANSI_PURPLE + "---- Add New Person ----\n" + ANSI_RESET);
+				Print.purple("---- Add New Person ----\n");
 				System.out.print("Input Father Id: ");
 
 				fatherId = input.nextInt();
@@ -68,7 +68,7 @@ public class MainClass {
 			case 2:
 				//////////////////////// Delete a Person //////////////////////////
 
-				System.out.print(ANSI_PURPLE + "---- Delete A Person ----\n" + ANSI_RESET);
+				Print.purple("---- Delete A Person ----\n");
 				System.out.print("Input Person Id: ");
 
 				sonId = input.nextInt();
@@ -94,7 +94,7 @@ public class MainClass {
 			case 3:
 				//////////////////////////// Print a Person Sons /////////////////////////
 
-				System.out.print(ANSI_PURPLE + "---- Print A Person Sons ----\n" + ANSI_RESET);
+				Print.purple("---- Print A Person Sons ----\n");
 				System.out.print("Input A Person Id: ");
 
 				fatherId = input.nextInt();
@@ -104,7 +104,7 @@ public class MainClass {
 			case 4:
 				///////////////////////////////// Print a Person Brother /////////////////////
 
-				System.out.print(ANSI_PURPLE + "---- Print A Person Brothers And Nephews  ----\n" + ANSI_RESET);
+				Print.purple("---- Print A Person Brothers And Nephews  ----\n");
 				System.out.print("Input A Person Id: ");
 
 				sonId = input.nextInt();
@@ -114,7 +114,7 @@ public class MainClass {
 			case 5:
 				/////////////////////////////// Print a Person Nephews //////////////////////
 
-				System.out.print(ANSI_PURPLE + "---- Print A Person Nephews  ----\n" + ANSI_RESET);
+				Print.purple("---- Print A Person Nephews  ----\n");
 				System.out.print("Input Person Id: ");
 
 				fatherId = input.nextInt();
@@ -125,7 +125,7 @@ public class MainClass {
 			case 6:
 				//////////////////////////// Print Number //////////////////////////////
 
-				System.out.print(ANSI_PURPLE + "---- Print Numbers  ----\n" + ANSI_RESET);
+				Print.purple("---- Print Numbers  ----\n");
 				int num = family.getNumber(family.oldOne);
 				System.out.println(ANSI_GREEN + "Numbers Are: " + num + ANSI_RESET);
 
@@ -133,7 +133,7 @@ public class MainClass {
 			case 7:
 				//////////////////////////////// Print a Person Uncles //////////////////
 
-				System.out.print(ANSI_PURPLE + "---- Print A Person Uncles  ----\n" + ANSI_RESET);
+				Print.purple("---- Print A Person Uncles  ----\n");
 				System.out.print("Input A Person Id: ");
 
 				sonId = input.nextInt();
