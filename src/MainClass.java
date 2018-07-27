@@ -74,7 +74,7 @@ public class MainClass {
 				// find him in family
 				son = family.searchById(family.oldOne, sonId);
 				if (son == null) {
-					Print.red("Person not Found!\n");
+					Print.red(Messages.PERSON_NOT_FOUND + "\n");
 					break;
 				}
 				String b;
@@ -150,7 +150,7 @@ public class MainClass {
 
 				createIdsFile(family);
 				createFamilyFile(family);
-				Print.green("---- Family Saved Succesfuly!!!  ----\n");
+				Print.green(Messages.FAMILY_REMOVED + "\n");
 				break;
 
 			case 10:
@@ -171,7 +171,7 @@ public class MainClass {
 			bufferedWriter.close();
 
 		} catch (IOException ex) {
-			System.out.println("Error writing to file '" + fileName + "'");
+			System.out.println(Messages.WRITING_FILE + fileName + "'");
 
 		}
 
@@ -188,7 +188,7 @@ public class MainClass {
 			if (person.bigSon != null)
 				addToIdsFile(person.bigSon, bufferedWriter);
 		} catch (IOException ex) {
-			System.out.println("Error writing to file '" + fileName + "'");
+			System.out.println(Messages.WRITING_FILE + fileName + "'");
 
 		}
 	}
@@ -204,7 +204,7 @@ public class MainClass {
 			bufferedWriter.close();
 
 		} catch (IOException ex) {
-			System.out.println("Error writing to file '" + fileName + "'");
+			System.out.println(Messages.WRITING_FILE + fileName + "'");
 
 		}
 	}
@@ -229,7 +229,7 @@ public class MainClass {
 			}
 
 		} catch (IOException ex) {
-			System.out.println("Error writing to file '" + fileName + "'");
+			System.out.println(Messages.WRITING_FILE + fileName + "'");
 
 		}
 	}
@@ -256,7 +256,7 @@ public class MainClass {
 			}
 			fileReader.close();
 		} catch (FileNotFoundException ex) {
-			System.out.println("Unable to open file '" + fileName + "'");
+			System.out.println(Messages.UNABLE_OPEN + fileName + "'");
 		}
 	}
 
@@ -292,7 +292,7 @@ public class MainClass {
 			fileReader.close();
 			return family;
 		} catch (FileNotFoundException ex) {
-			System.out.println("Unable to open file '" + fileName + "'");
+			System.out.println(Messages.UNABLE_OPEN + fileName + "'");
 		}
 		return null;
 	}

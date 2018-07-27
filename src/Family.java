@@ -11,7 +11,7 @@ public class Family {
 	public void addBigSon(int fatherId, String son, int sonId) {
 		Person temp = searchById(this.oldOne, fatherId);
 		if (temp == null) {
-			Print.red("There's No Father!\n");
+			Print.red(Messages.NO_FATHER + "\n");
 			return;
 		}
 		temp.bigSon = new Person(son, sonId);
@@ -21,7 +21,7 @@ public class Family {
 	public void addBro(int personId, String bro, int broId) {
 		Person temp = searchById(this.oldOne, personId);
 		if (temp == null) {
-			Print.red("There's No One with That Name!\n");
+			Print.red(Messages.NO_ONE_NAME + "\n");
 		}
 		temp.bro = new Person(bro, broId);
 		temp.bro.father = temp.father;
@@ -30,7 +30,7 @@ public class Family {
 	public void addNew(Person father, String son, int sonId, int childNumber) {
 		Person temp = father;
 		if (temp == null) {
-			Print.red("There's No Father!\n");
+			Print.red(Messages.NO_FATHER + "\n");
 			return;
 		}
 		if (temp.bigSon != null && childNumber > 1) {
@@ -48,31 +48,31 @@ public class Family {
 			}
 			return;
 		} else
-			Print.red("Add is Not Done!!!\n");
+			Print.red(Messages.ADD_DONE + "\n");
 	}
 
 	public void delete(Person person) {
 
 		Person temp = person;
 		if (temp == null) {
-			Print.red("No One Found !\n");
+			Print.red(Messages.NO_FOUND + "\n");
 			return;
 		}
 		if (temp.father == null) {
 			oldOne = null;
-			Print.green("Family Been Removed!\n");
+			Print.green(Messages.FAMILY_REMOVED + "\n");
 			return;
 		}
 		if (temp.father.bigSon.id == person.id) {
 			temp.father.bigSon = temp.father.bigSon.bro;
-			Print.green("Person Deleted Succecfully!!\n");
+			Print.green(Messages.PERSON_DELETED + "\n");
 			return;
 		}
 		temp = temp.father.bigSon;
 		while (temp.bro.id != person.id)
 			temp = temp.bro;
 		temp.bro = temp.bro.bro;
-		Print.green("Person Deleted Succecfully!!\n");
+		Print.green(Messages.PERSON_DELETED + "\n");
 		return;
 	}
 
@@ -115,11 +115,11 @@ public class Family {
 	public void printSons(Person person) {
 		Person temp = person;
 		if (temp == null) {
-			Print.red("No One Found !\n");
+			Print.red(Messages.NO_FOUND + "\n");
 			return;
 		}
 		if (temp.bigSon == null) {
-			Print.red("There's No Son!\n");
+			Print.red(Messages.NO_SON + "\n");
 			return;
 		}
 		Print.green("Sons: " + temp.bigSon.name);
@@ -134,11 +134,11 @@ public class Family {
 	public void printBrothersAndNephews(Person person) {
 		Person temp = person;
 		if (temp == null) {
-			Print.red("No One Found !\n");
+			Print.red(Messages.NO_FOUND + "\n");
 			return;
 		}
 		if (temp.bro == null) {
-			Print.red("There's No Brother!\n");
+			Print.red(Messages.NO_BROTHER + "\n");
 			return;
 		}
 		temp = temp.father.bigSon;
@@ -155,11 +155,11 @@ public class Family {
 	public void printNephews(Person person) {
 		Person temp = person;
 		if (temp == null) {
-			Print.red("No One Found!\n");
+			Print.red(Messages.NO_FOUND + "\n");
 			return;
 		}
 		if (temp.bigSon == null) {
-			Print.red("There's No Son!\n");
+			Print.red(Messages.NO_SON + "\n");
 			return;
 		}
 		Print.green(temp.bigSon.name + " ");
@@ -175,12 +175,12 @@ public class Family {
 	public void printUncles(Person person) {
 		Person temp = person;
 		if (temp == null) {
-			Print.red("No One Found!\n");
+			Print.red(Messages.NO_FOUND + "\n");
 			return;
 		}
 		temp = temp.father;
 		if (temp == null || temp.bro == null) {
-			Print.red("Thers's No Uncle!\n");
+			Print.red(Messages.NO_UNCLE + "\n");
 			return;
 		}
 		printBrothersAndNephews(temp);
@@ -194,7 +194,7 @@ public class Family {
 
 	public void print(Person p) {
 		if (p == null) {
-			Print.red("There's No Family!\n");
+			Print.red(Messages.NO_FAMILY + "\n");
 			return;
 		}
 		if (p.bro != null) {
