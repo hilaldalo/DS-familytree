@@ -38,7 +38,7 @@ public class MainClass {
 				father = family.searchById(family.oldOne, fatherId);
 
 				if (father == null) {
-					Print.red("Father Not Found!!!\n");
+					Print.red(Messages.FATHER_NOT_FOUND + "\n");
 					break;
 				}
 				Print.green(father.name + "\n");
@@ -47,7 +47,7 @@ public class MainClass {
 				sonId = input.nextInt();
 				// search to see if id is already exist or not
 				if (searchInIds(sonId, idsList)) {
-					Print.red("This Id Already Exist!!!\n");
+					Print.red(Messages.ID_ALREADY_EXSIT + "\n");
 					break;
 				}
 				// add his id to our ids list
